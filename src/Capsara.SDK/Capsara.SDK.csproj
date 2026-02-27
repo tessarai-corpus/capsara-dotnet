@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net48</TargetFrameworks>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>Capsara.SDK</RootNamespace>
+    <AssemblyName>Capsara.SDK</AssemblyName>
+
+    <!-- NuGet Package Metadata -->
+    <PackageId>Capsara.SDK</PackageId>
+    <Version>1.0.3</Version>
+    <Authors>Tessarai</Authors>
+    <Company>Tessarai, LLC</Company>
+    <Product>Capsara SDK</Product>
+    <Description>Capsara SDK for .NET</Description>
+    <Copyright>Copyright © 2024-2026 Tessarai, LLC and Laird Rixford</Copyright>
+    <PackageTags>encryption;security;file-sharing;zero-knowledge;rsa;aes;cryptography;hipaa;compliance</PackageTags>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/tessarai-corpus/capsara-dotnet</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <!-- Shared dependencies -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.*" />
+  </ItemGroup>
+
+  <!-- .NET 8 specific -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <!-- System.Text.Json is built-in for .NET 8 -->
+  </ItemGroup>
+
+  <!-- .NET Framework 4.8 specific -->
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="System.Text.Json" Version="8.*" />
+    <PackageReference Include="BouncyCastle.Cryptography" Version="2.*" />
+    <PackageReference Include="System.Memory" Version="4.*" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <!-- Conditional compilation symbols -->
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net8.0'">
+    <DefineConstants>$(DefineConstants);NET6_0_OR_GREATER</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <DefineConstants>$(DefineConstants);NETFRAMEWORK</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Include README in NuGet package -->
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" Condition="Exists('..\..\README.md')" />
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="\" Condition="Exists('..\..\LICENSE')" />
+  </ItemGroup>
+
+  <!-- Expose internals to test project -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Capsara.SDK.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+</Project>
