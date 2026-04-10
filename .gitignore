@@ -1,0 +1,103 @@
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio temp files
+.vs/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results of an ATL project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# NuGet
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/packages/*
+*.nupkg
+*.snupkg
+.nuget/
+nuget.exe
+
+# Dotnet
+*.csproj.user
+BenchmarkDotNet.Artifacts/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Visual Studio Code
+.vscode/
+
+# Test Results
+[Tt]est[Rr]esult*/
+*.trx
+coverage/
+*.coverage
+*.coveragexml
+*.opencover.xml
+
+# Code coverage
+coverage*.json
+coverage*.xml
+
+# JetBrains Rider
+.idea/
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Package files
+*.nupkg
+
+# Local settings
+appsettings.local.json
+appsettings.*.local.json
+secrets.json
+
+# Build script artifacts
+*.swp
+*~
+
+# Publish output
+[Pp]ublish/
+
+# NuGet restore cache
+packages/
+*.nuget.props
+*.nuget.targets
